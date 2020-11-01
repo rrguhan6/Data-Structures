@@ -89,7 +89,7 @@ class bst:
         if(cur.left):
             self.inorder(cur.left)
 
-        print(cur.data)
+        print(cur.data, end=" ")
 
         if(cur.right):
             self.inorder(cur.right)
