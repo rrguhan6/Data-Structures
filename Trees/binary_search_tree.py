@@ -80,7 +80,19 @@ class bst:
         print(cur.data, end=" ")
 
     def inorder(self, cur=None):
-        pass
+        if(cur is None):
+            if(self.root):
+                cur = self.root
+            else:
+                return
+
+        if(cur.left):
+            self.inorder(cur.left)
+
+        print(cur.data)
+
+        if(cur.right):
+            self.inorder(cur.right)
 
 
 tree = bst()
@@ -98,4 +110,4 @@ tree.insert(18)
 tree.insert(30)
 
 
-tree.postorder()
+tree.inorder()
