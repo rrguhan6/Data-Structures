@@ -36,7 +36,7 @@ class bst:
                 cur.right = node(data)
                 return True
 
-    # breadth first search
+    # breadth first search - horizontal
     def bfs(self):
         _q = []
         _q.append(self.root)
@@ -49,6 +49,38 @@ class bst:
                 _q.append(cur.left)
             if(cur.right):
                 _q.append(cur.right)
+
+    # depth first search - vertical
+    def preorder(self, cur=None):
+        if(cur is None):
+            if(self.root):
+                cur = self.root
+            else:
+                return
+
+        print(cur.data, end="  ")
+
+        if(cur.left):
+            self.preorder(cur.left)
+        if(cur.right):
+            self.preorder(cur.right)
+
+    def postorder(self, cur=None):
+        if(cur is None):
+            if(self.root):
+                cur = self.root
+            else:
+                return
+
+        if(cur.left):
+            self.postorder(cur.left)
+        if(cur.right):
+            self.postorder(cur.right)
+
+        print(cur.data, end=" ")
+
+    def inorder(self, cur=None):
+        pass
 
 
 tree = bst()
@@ -66,4 +98,4 @@ tree.insert(18)
 tree.insert(30)
 
 
-tree.bfs()
+tree.postorder()
