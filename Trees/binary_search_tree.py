@@ -95,6 +95,18 @@ class bst:
             self.inorder(cur.right)
 
 
+"""
+                    10
+                 /      \
+               6         15
+              / \       /   \
+            4     9   12      24
+                 /          /    \
+                7         20      30
+                         /
+                       18
+"""
+
 tree = bst()
 
 tree.insert(10)
