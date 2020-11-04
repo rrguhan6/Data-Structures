@@ -94,6 +94,25 @@ class bst:
         if(cur.right):
             self.inorder(cur.right)
 
+    def search(self,  search_data, cur=None):
+        if(cur is None):
+            if(self.root is not None):
+                cur = self.root
+            else:
+                return False
+        print(cur.data)
+        if(cur.data == search_data):
+            return True
+        else:
+            if(cur.data < search_data):
+                if(cur.right):
+                    return self.search(search_data, cur.right)
+                else:
+                    return False
+            else:
+                if(cur.left):
+                    return self.search(search_data, cur.left)
+
 
 """
                     10
@@ -122,4 +141,6 @@ tree.insert(18)
 tree.insert(30)
 
 
-tree.inorder()
+# tree.inorder()
+
+# print(tree.search(search_data=20))
