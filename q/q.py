@@ -21,15 +21,11 @@ class q:
     def insert(self, data):
         if(self.head is None):
             self.head = node(data)
-            self.rear = node(data)
+            self.rear = self.head
             return True
 
-        cur = self.head
-        while(cur.next is not None):
-            cur = cur.next
-
-        cur.next = node(data)
-        self.rear = cur.next
+        self.rear.next = node(data)
+        self.rear = self.rear.next
 
     def peek(self):
         if(self.head):
@@ -40,8 +36,21 @@ class q:
     def is_empty(self):
         return self.head is None
 
-    def dq(self):
-        pass
+    def delete_head(self):
+        if(self.head):
+            self.head = self.head.next
+
+    def delete_rear(self):
+        if(self.head):
+            cur = self.head
+            if(cur.next):
+                while(cur.next.next is not None):
+                    cur = cur.next
+                self.rear = cur
+                self.rear.next = None
+
+            else:
+                self.head = self.rear
 
 
 x = q()
@@ -53,5 +62,10 @@ x.insert(7)
 x.insert(8)
 x.insert(12)
 x.insert(11)
+x.insert(11)
 
+# x.print()
+x.delete_head()
+print(x.peek())
+x.delete_rear()
 x.print()
