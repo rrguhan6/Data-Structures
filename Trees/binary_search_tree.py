@@ -113,6 +113,33 @@ class bst:
                 if(cur.left):
                     return self.search(search_data, cur.left)
 
+    # def delete(self, delete_data, cur=None):
+    #     if(cur is None):
+    #         if(self.root is not None):
+    #             cur = self.root
+    #         else:
+    #             return False
+
+    #     if(cur.data == delete_data):
+    #         if(cur.right):
+    #             pass
+    #         else:
+    #             if(cur.left):
+    #                 pass
+    #             else:
+
+    #     else:
+    #         if(cur.data < delete_data):
+    #             if(cur.left):
+    #                 return self.delete(delete_data, cur.left)
+    #             else:
+    #                 return False
+    #         else:
+    #             if(cur.right):
+    #                 return self.delete(delete_data, cur.right)
+    #             else:
+    #                 return False
+
 
 """
                     10
