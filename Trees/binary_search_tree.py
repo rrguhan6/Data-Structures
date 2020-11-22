@@ -113,32 +113,47 @@ class bst:
                 if(cur.left):
                     return self.search(search_data, cur.left)
 
-    # def delete(self, delete_data, cur=None):
-    #     if(cur is None):
-    #         if(self.root is not None):
-    #             cur = self.root
-    #         else:
-    #             return False
+    def delete(self, delete_value):
+        return self._delete(self.root, delete_value)
 
-    #     if(cur.data == delete_data):
-    #         if(cur.right):
-    #             pass
-    #         else:
-    #             if(cur.left):
-    #                 pass
-    #             else:
+    def _leftmost(self, cur):
+        current = cur
 
-    #     else:
-    #         if(cur.data < delete_data):
-    #             if(cur.left):
-    #                 return self.delete(delete_data, cur.left)
-    #             else:
-    #                 return False
-    #         else:
-    #             if(cur.right):
-    #                 return self.delete(delete_data, cur.right)
-    #             else:
-    #                 return False
+        while(current.left is not None):
+            current = current.left
+
+        return current
+
+    def _delete(self, cur, key):
+
+        if cur is None:
+            return cur
+
+        if key < cur.data:
+            cur.left = self._delete(cur.left, key)
+
+        elif(key > cur.data):
+            cur.right = self._delete(cur.right, key)
+
+        else:
+
+            if cur.left is None:
+                temp = cur.right
+                cur = None
+                return temp
+
+            elif cur.right is None:
+                temp = cur.left
+                cur = None
+                return temp
+
+            temp = self._leftmost(cur.right)
+
+            cur.data = temp.data
+
+            cur.right = self._delete(cur.right, temp.data)
+
+        return cur
 
 
 """
@@ -168,6 +183,13 @@ tree.insert(18)
 tree.insert(30)
 
 
-# tree.inorder()
+tree.bfs()
+print()
+
+tree.delete(12)
+
+tree.bfs()
+print()
+
 
 # print(tree.search(search_data=20))
