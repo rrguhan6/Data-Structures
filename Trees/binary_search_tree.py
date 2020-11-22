@@ -136,7 +136,6 @@ class bst:
             cur.right = self._delete(cur.right, key)
 
         else:
-
             if cur.left is None:
                 temp = cur.right
                 cur = None
