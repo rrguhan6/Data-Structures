@@ -190,6 +190,3 @@ tree.delete(12)
 
 tree.bfs()
 print()
-
-
-# print(tree.search(search_data=20))
