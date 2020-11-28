@@ -83,6 +83,33 @@ class linked_list:
 
         self.head = prev
 
+    def is_sorted(self):
+        if(self.head is None):
+            return True
+
+        cur = self.head
+
+        while(cur.next):
+            if(cur.data > cur.next.data):
+                return False
+
+            cur = cur.next
+
+        return True
+
+    def is_cyclic(self):
+        runner = self.head
+        walker = self.head
+
+        while(runner.next.next and walker.next):
+            walker = walker.next
+            runner = runner.next.next
+
+            if(runner == walker):
+                return True
+
+        return False
+
 
 l1 = linked_list(1)
 
@@ -103,3 +130,5 @@ l1.print()
 # l1.delete(3)
 l1.reverse()
 l1.print()
+
+print(l1.is_sorted)
