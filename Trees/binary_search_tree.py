@@ -51,7 +51,7 @@ class bst:
                 _q.append(cur.right)
 
     # depth first search - vertical
-    def preorder(self, cur=None):
+    def preorder(self, cur=None, temp = []):
         if(cur is None):
             if(self.root):
                 cur = self.root
@@ -59,11 +59,18 @@ class bst:
                 return
 
         print(cur.data, end="  ")
-
+        sol = []
         if(cur.left):
-            self.preorder(cur.left)
+            _temp = [*temp, cur.left.data]
+            sol = sol.append(self.preorder(cur.left , _temp , sol))
         if(cur.right):
-            self.preorder(cur.right)
+            _temp = [*temp , cur.right.data]
+            sol = sol.append(self.preorder(cur.right, _temp , sol))
+        if(cur.left == None and cur.right == None):
+            sol.append(temp)
+            print(sol)
+            return sol
+
 
     def postorder(self, cur=None):
         if(cur is None):
@@ -173,19 +180,20 @@ tree.insert(10)
 tree.insert(6)
 tree.insert(4)
 tree.insert(9)
-tree.insert(7)
-tree.insert(15)
-tree.insert(12)
-tree.insert(24)
-tree.insert(20)
-tree.insert(18)
-tree.insert(30)
+# tree.insert(7)
+# tree.insert(15)
+# tree.insert(12)
+# tree.insert(24)
+# tree.insert(20)
+# tree.insert(18)
+# tree.insert(30)
+#
+#
+tree.preorder()
+# print()
 
-
-tree.bfs()
-print()
-
-tree.delete(12)
-
-tree.bfs()
-print()
+# tree.delete(12)
+#
+# tree.bfs()
+# print()
+tree.preorder()
