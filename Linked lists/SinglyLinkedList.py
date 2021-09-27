@@ -11,14 +11,14 @@ class linked_list:
 
     def print(self):
         temp = self.head
-        while(temp.next != None):
+        while temp.next != None:
             print(temp.data, end="  ")
             temp = temp.next
         print(temp.data)
 
     def insert_at_end(self, data):
         temp = self.head
-        while(temp.next != None):
+        while temp.next != None:
             temp = temp.next
         temp.next = node(data)
         self.length = self.length + 1
