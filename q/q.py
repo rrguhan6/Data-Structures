@@ -12,14 +12,14 @@ class q:
     def print(self):
         cur = self.head
 
-        if(cur):
+        if cur:
 
-            while(cur):
+            while (cur):
                 print(cur.data)
                 cur = cur.next
 
     def insert(self, data):
-        if(self.head is None):
+        if self.head is None:
             self.head = node(data)
             self.rear = self.head
             return True
@@ -28,7 +28,7 @@ class q:
         self.rear = self.rear.next
 
     def peek(self):
-        if(self.head):
+        if self.head:
             return self.head.data
         else:
             return
@@ -37,14 +37,14 @@ class q:
         return self.head is None
 
     def delete_head(self):
-        if(self.head):
+        if self.head:
             self.head = self.head.next
 
     def delete_rear(self):
-        if(self.head):
+        if self.head:
             cur = self.head
-            if(cur.next):
-                while(cur.next.next is not None):
+            if cur.next:
+                while cur.next.next is not None:
                     cur = cur.next
                 self.rear = cur
                 self.rear.next = None
